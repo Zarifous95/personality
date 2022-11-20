@@ -13,6 +13,13 @@
   display: flex;
 }
 
+.btn.btn-disabled {
+  cursor: none;
+  pointer-events: none;
+  background-color: rgb(219, 206, 206);
+  color: black;
+}
+
 a:link {
   text-decoration: none;
 }

@@ -10,9 +10,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="personality/">
-          <Route path=":questionId" element={<PersonalityTest />} />
+          <Route path=":quizId/">
+            <Route path=":questionId" element={<PersonalityTest />} />
+            <Route path="results/" element={<Result />} />
+          </Route>
         </Route>
-        <Route path="results/" element={<Result />} />
       </Routes>
     </BrowserRouter>
   );
