@@ -12,16 +12,7 @@ resultsRoutes.route("/").get(function (_req, res) {
   );
 });
 
-resultsRoutes.route("/:id").get(function (req, res) {
-  let id = req.params.id;
-
-  db.query(sql`SELECT * FROM results WHERE id = ${id};`).then(
-    (results) => res.json(results),
-    (err) => console.error(err)
-  );
-});
-
-resultsRoutes.route("/quiz/:quizId").get(function (req, res) {
+resultsRoutes.route("/:quizId").get(function (req, res) {
   let quizId = req.params.quizId;
 
   db.query(sql`SELECT * FROM results WHERE quiz_id = ${quizId};`).then(
@@ -30,14 +21,14 @@ resultsRoutes.route("/quiz/:quizId").get(function (req, res) {
   );
 });
 
-resultsRoutes.route("/quiz/:quizId/add/:id").post(function (req, res) {
-  const id = req.params.id;
+resultsRoutes.route("/:quizId/add/:questionId").post(function (req, res) {
+  const questionId = req.params.questionId;
   const value = req.body.value;
-  const quizId = req.body.quizId;
+  const quizId = req.params.quizId;
 
   db.query(
-    sql`REPLACE INTO results (id, value, quiz_id) 
-      VALUES (${id}, ${value}, ${quizId})
+    sql`REPLACE INTO results (quiz_id, question_id, value) 
+      VALUES (${quizId}, ${questionId}, ${value})
     ;`
   ).then(
     (results) => res.json(results),
@@ -45,4 +36,4 @@ resultsRoutes.route("/quiz/:quizId/add/:id").post(function (req, res) {
   );
 });
 
-module.exports = recordRoutes;
+module.exports = resultsRoutes;

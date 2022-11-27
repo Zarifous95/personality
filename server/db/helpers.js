@@ -7,9 +7,10 @@ async function init_tables() {
   );`);
 
   await db.query(sql`CREATE TABLE results (
-    id VARCHAR NOT NULL PRIMARY KEY,
+    quiz_id VARCHAR NOT NULL,
+    question_id VARCHAR NOT NULL,
     value INT(10) NOT NULL,
-    quiz_id VARCHAR NOT NULL
+    PRIMARY KEY (quiz_id, question_id)
   );`);
 }
 
@@ -48,30 +49,30 @@ async function init_answers() {
 
   await db.query(sql`INSERT INTO answers (id, text, value, question_id)
   VALUES 
-  (1, "Don't dare to interrupt them", -1, 1), 
-  (2, "Think it's more important to give them some of your time; work can wait", 2, 1), 
-  (3, "Listen, but with only half an ear", 1, 1), 
-  (4, "Interrupt and explain that you are really busy at the moment", -2, 1), 
+  (1, "Don't dare to interrupt them", 2, 1), 
+  (2, "Think it's more important to give them some of your time; work can wait", 4, 1), 
+  (3, "Listen, but with only half an ear", 3, 1), 
+  (4, "Interrupt and explain that you are really busy at the moment", 1, 1), 
 
-  (5, "Look at your watch every two minutes", 1, 2), 
-  (6, "Bubble with inner anger, but keep quiet", -1, 2), 
-  (7, "Explain to other equally impatient people in the room that the doctor is always running late", 2, 2), 
-  (8, "Complain in a loud void, while tapping you foor impatienlty", -2, 2), 
+  (5, "Look at your watch every two minutes", 3, 2), 
+  (6, "Bubble with inner anger, but keep quiet", 2, 2), 
+  (7, "Explain to other equally impatient people in the room that the doctor is always running late", 4, 2), 
+  (8, "Complain in a loud void, while tapping you foor impatienlty", 1, 2), 
 
-  (9, "Don't dare contradict them", -1, 3), 
-  (10, "Think that they are obviously right", -2, 3), 
-  (11, "Defend your own point of view, tooth and nail", 2, 3), 
-  (12, "Continuously interrupt your colleague", 1, 3), 
+  (9, "Don't dare contradict them", 2, 3), 
+  (10, "Think that they are obviously right", 1, 3), 
+  (11, "Defend your own point of view, tooth and nail", 4, 3), 
+  (12, "Continuously interrupt your colleague", 3, 3), 
 
-  (13, "Are bit too far towards the back so don't really hear what they guide is saying", -2, 4), 
-  (14, "Follow the group without question", -1, 4), 
-  (15, "Make sure that everyone is able to hear properly", 1, 4), 
-  (16, "Are right up the front, adding your own comments in a loud voice", 2, 4), 
+  (13, "Are bit too far towards the back so don't really hear what they guide is saying", 1, 4), 
+  (14, "Follow the group without question", 2, 4), 
+  (15, "Make sure that everyone is able to hear properly", 3, 4), 
+  (16, "Are right up the front, adding your own comments in a loud voice", 4, 4), 
 
-  (17, "Ask you to tell a story in front of everyone else", -1, 5), 
-  (18, "Talk privately between themselves", 2, 5), 
-  (19, "Hang around you all evening", -2, 5), 
-  (20, "Always drag the conversation back to themselves", 1, 5);`);
+  (17, "Ask you to tell a story in front of everyone else", 2, 5), 
+  (18, "Talk privately between themselves", 4, 5), 
+  (19, "Hang around you all evening", 1, 5), 
+  (20, "Always drag the conversation back to themselves", 3, 5);`);
 }
 module.exports = {
   init_answers,

@@ -23,11 +23,10 @@ quizRoutes.route("/:id").get(function (req, res) {
 
 quizRoutes.route("/add/:id").get(function (req, res) {
   const id = req.params.id;
-  const value = "test" + id;
 
   db.query(
-    sql`INSERT INTO quiz (id, value) 
-    VALUES (${id}, ${value})
+    sql`INSERT INTO quiz (id) 
+    VALUES (${id})
   ;`
   ).then(
     (results) => res.json(results),
