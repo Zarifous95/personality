@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8b2cf0b4.css",
+    "main.js": "/static/js/main.22081a45.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/extrovert.jpg": "/static/media/extrovert.fb2f6195c2721fc114b0.jpg",
+    "static/media/introvert.jpg": "/static/media/introvert.747af16f8628745ab46c.jpg",
+    "static/media/image.jpg": "/static/media/image.b784134f4594f7487ba9.jpg",
+    "index.html": "/index.html",
+    "main.8b2cf0b4.css.map": "/static/css/main.8b2cf0b4.css.map",
+    "main.22081a45.js.map": "/static/js/main.22081a45.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8b2cf0b4.css",
+    "static/js/main.22081a45.js"
+  ]
+}

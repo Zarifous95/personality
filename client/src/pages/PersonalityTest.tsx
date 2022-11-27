@@ -69,13 +69,14 @@ export default function PersonalityTest() {
       setAnswers(answers);
     };
 
-    const timer = setTimeout(() => {
+    if (!answers || answers?.length < 0) {
       fetchAnswers();
-      fetchQuestions();
-    }, 1000);
+    }
 
-    return () => clearTimeout(timer);
-  }, [questionId]);
+    if (!question) {
+      fetchQuestions();
+    }
+  }, [question, answers, questionId]);
 
   function handleSelect(answer: Answer) {
     setSelectedAnswer(answer);
@@ -91,8 +92,12 @@ export default function PersonalityTest() {
     }
 
     const response = await fetch(
-      `http://localhost:5000/results/${quizId}/add/${quizId + questionId}`,
-      { method: "POST", body: JSON.stringify({ value: answer.value }) }
+      `http://localhost:5000/results/${quizId}/add/${questionId}`,
+      {
+        method: "POST",
+        body: JSON.stringify({ value: answer.value }),
+        headers: { "Content-Type": "application/json" },
+      }
     );
 
     if (!response.ok) {
@@ -136,17 +141,29 @@ export default function PersonalityTest() {
               {questionId !== "1" && (
                 <LinkButton
                   className="margin-vertical margin-horizontal"
-                  href={"/personality/" + (parseInt(questionId) - 1)}
+                  href={
+                    "/personality/" + quizId + "/" + (parseInt(questionId) - 1)
+                  }
                   text="Previous"
                 />
               )}
               {questionId !== "5" && (
                 <LinkButton
                   className="margin-vertical margin-horizontal"
-                  href={"/personality/" + (parseInt(questionId) + 1)}
+                  href={
+                    "/personality/" + quizId + "/" + (parseInt(questionId) + 1)
+                  }
                   disabled={selectedAnswer.id === ""}
                   onClick={() => handleNext(quizId, questionId, selectedAnswer)}
                   text="Next"
+                />
+              )}
+              {questionId === "5" && (
+                <LinkButton
+                  className="margin-vertical margin-horizontal"
+                  href={"/personality/" + quizId + "/results"}
+                  onClick={() => handleNext(quizId, questionId, selectedAnswer)}
+                  text="Finalize"
                 />
               )}
             </div>
