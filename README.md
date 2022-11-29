@@ -33,7 +33,7 @@ Install dependencies
 Start the server
 
 ```bash
-  node run server
+  node server
 ```
 
 ## Screenshots
