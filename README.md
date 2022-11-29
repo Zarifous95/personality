@@ -35,3 +35,17 @@ Start the server
 ```bash
   node run server
 ```
+
+## Screenshots
+
+Landing page
+
+![App Screenshot](/screenshots/landing.PNG)
+
+Quiz page
+
+![App Screenshot](/screenshots/question.PNG)
+
+Results page
+
+![App Screenshot](/screenshots/result.PNG)
